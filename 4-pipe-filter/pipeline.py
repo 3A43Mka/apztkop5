@@ -1,6 +1,12 @@
 class Pipeline:
     def __init__(self):
-        pass
+        self.filters = list()
+
+    def add(self, filter):
+        self.filters.extend(filter)
 
     def execute(self, message):
-        pass
+        print("Executing pipeline...")
+        for message_filter in self.filters:
+            message_filter(message)
+
