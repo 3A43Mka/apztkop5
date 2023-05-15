@@ -1,16 +1,15 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from master import Master
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def init():
+    master = Master()
+    master.process([{'name': 'Wrap a present for John', 'steps': 3},
+                    {'name': 'Wrap a present for Bill', 'steps': 4}])
+    print("Logs:")
+    print(master.get_logs())
+    print("Results:")
+    print(master.get_results())
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    init()

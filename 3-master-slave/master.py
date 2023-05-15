@@ -1,13 +1,16 @@
+from slave import Slave
+
+
 class Master:
     def __init__(self):
         self.results = []
         self.logs = []
         self.slaves = []
 
-    def add_slave(self, slave):
-        self.slaves.append(slave)
-
-    def process(self):
+    def process(self, tasks):
+        for task in tasks:
+            slave = Slave(task['name'], task['steps'])
+            self.slaves.append(slave)
         while len(self.slaves):
             for slave in self.slaves:
                 if slave.is_complete():
