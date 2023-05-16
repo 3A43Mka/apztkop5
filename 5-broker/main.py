@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from server import Server
+from broker import Broker
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    h_server = Server("High Tier Server")
+    m_server = Server("Medium Tier Server")
+    l_server = Server("Low Tier Server")
+    broker1 = Broker(h_server, m_server, l_server)
+
+    # client calls server
+    l_client_request = {'subscription': 'low'}
+    broker1.process(l_client_request)
+
+    h_client_request = {'subscription': 'high'}
+    broker1.process(h_client_request)
+
+    print(l_client_request)
+    print(h_client_request)
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    main()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

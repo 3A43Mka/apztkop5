@@ -1,6 +1,10 @@
+from server import Server
 from broker import Broker
 
-broker1 = Broker()
+h_server = Server("High Tier Server")
+m_server = Server("Medium Tier Server")
+l_server = Server("Low Tier Server")
+broker1 = Broker(h_server, m_server, l_server)
 
 
 def test_1():
