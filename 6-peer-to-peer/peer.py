@@ -1,15 +1,22 @@
 class Peer:
     def __init__(self, initial_data):
-        pass
+        self.data = initial_data
+        self.connection = None
 
     def connect(self, other):
-        pass
+        if self.connection is None:
+            self.connection = other
+            other.connection = self
 
     def disconnect(self):
-        pass
+        if self.connection is not None:
+            self.connection.connection = None
+            self.connection = None
 
     def send_data(self, data):
-        pass
+        if self.connection is not None:
+            self.connection.data.extend(data)
 
     def get_data(self):
-        pass
+        if self.connection is not None:
+            self.data.extend(self.connection.data)
