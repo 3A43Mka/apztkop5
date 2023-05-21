@@ -1,16 +1,16 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from model import Model
+from controller import Controller
+from view import View
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    model = Model()
+    model.add_user({'username': 'johnjackson', 'email': 'john@some.com'})
+    model.add_user({'username': 'jim', 'email': 'jim@some.com'})
+    view = View()
+    controller = Controller(model, view)
+    controller.handle_input()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
