@@ -1,12 +1,13 @@
 class Blackboard:
     def __init__(self):
-        pass
+        self.data = []
 
     def add_data(self, data):
-        pass
+        self.data.append(data)
 
     def get_data(self):
-        pass
+        return self.data
 
     def display_data(self):
-        pass
+        for d in self.data:
+            print(f'- {d}')
