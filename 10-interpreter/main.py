@@ -1,16 +1,31 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from context import Context
+from variable import Variable
+from constant import Constant
+from add import Add
+from subtract import Subtract
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    context1 = Context()
+
+    # 5 + 8 + 10 - 2
+    # a + b + 10 - c
+    # = 21
+
+    context1.set_variable('a', 5)
+    context1.set_variable('b', 8)
+    context1.set_variable('c', 2)
+
+    expression = Add(Variable('a'), Variable('b'))
+    result = expression.interpret(context1)
+
+    expression = Add(Constant(result), Constant(10))
+    result = expression.interpret(context1)
+
+    expression = Subtract(Constant(result), Variable('c'))
+    result = expression.interpret(context1)
+    print(result)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()

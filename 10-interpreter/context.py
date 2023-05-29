@@ -1,9 +1,9 @@
 class Context:
     def __init__(self):
-        pass
+        self.variables = {}
 
     def set_variable(self, name, value):
-        pass
+        self.variables[name] = value
 
     def get_variable(self, name):
-        pass
+        return self.variables.get(name)
